@@ -1,0 +1,52 @@
+﻿<Window x:Class="LB3_LOBKOVA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Графический Редактор" Height="450" Width="800">
+    <DockPanel>
+        <!-- Меню -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить" Command="ApplicationCommands.Save"/>
+                <MenuItem Header="Загрузить" Command="ApplicationCommands.Open"/>
+                <MenuItem Header="Настройки" Click="OpenSettingsDialog_Click"/>
+                <MenuItem Header="О программе" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Панель инструментов -->
+        <ToolBar DockPanel.Dock="Top">
+            <TextBlock Text="Толщина линии:" Margin="5,0"/>
+            <ComboBox Name="LineWidthToolBarComboBox" Width="50" SelectionChanged="LineWidthToolBarComboBox_SelectionChanged">
+                <ComboBoxItem Content="1" />
+                <ComboBoxItem Content="2" />
+                <ComboBoxItem Content="3" />
+                <ComboBoxItem Content="5" />
+                <ComboBoxItem Content="7" />
+                <ComboBoxItem Content="10" />
+            </ComboBox>
+
+            <TextBlock Text="Цвет линии:" Margin="10,0,5,0"/>
+            <ComboBox Name="StrokeColorToolBarComboBox" Width="100" SelectionChanged="StrokeColorToolBarComboBox_SelectionChanged">
+                <ComboBoxItem Content="Черный" Tag="Black"/>
+                <ComboBoxItem Content="Красный" Tag="Red"/>
+                <ComboBoxItem Content="Синий" Tag="Blue"/>
+                <ComboBoxItem Content="Зеленый" Tag="Green"/>
+            </ComboBox>
+
+            <TextBlock Text="Цвет фона:" Margin="10,0,5,0"/>
+            <ComboBox Name="FillColorToolBarComboBox" Width="100" SelectionChanged="FillColorToolBarComboBox_SelectionChanged">
+                <ComboBoxItem Content="Голубой" Tag="LightBlue"/>
+                <ComboBoxItem Content="Желтый" Tag="Yellow"/>
+                <ComboBoxItem Content="Зеленый" Tag="Green"/>
+                <ComboBoxItem Content="Розовый" Tag="Pink"/>
+            </ComboBox>
+        </ToolBar>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock Name="StatusText"/>
+        </StatusBar>
+
+        <Grid Name="MainGrid" Background="White" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown" MouseMove="MainGrid_MouseMove">
+        </Grid>
+    </DockPanel>
+</Window>
